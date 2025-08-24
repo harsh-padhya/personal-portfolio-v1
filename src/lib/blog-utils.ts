@@ -52,6 +52,23 @@ export async function getBlogPost(category: string, subcategory: string, slug: s
   }
 }
 
+export async function getBlogPostById(id: string): Promise<BlogPost | null> {
+  try {
+    const allPosts = await getAllBlogPosts();
+    const postItem = allPosts.find(p => p.id === id);
+    
+    if (!postItem) {
+      return null;
+    }
+
+    // Load the full post with content
+    return await getBlogPost(postItem.category, postItem.subcategory, postItem.id);
+  } catch (error) {
+    console.error('Error getting blog post by ID:', error);
+    return null;
+  }
+}
+
 export async function getAllCategories(): Promise<BlogCategory[]> {
   try {
     const categoriesPath = path.join(BLOGS_DIR, 'categories.json');
@@ -98,4 +115,46 @@ export function getReadingTime(content: string): string {
   const words = content.trim().split(/\s+/).length;
   const minutes = Math.ceil(words / wordsPerMinute);
   return `${minutes} min read`;
+}
+
+// Admin functions for managing blog posts
+export async function saveBlogPost(post: BlogPost): Promise<void> {
+  try {
+    const filePath = path.join(BLOGS_DIR, post.category, post.subcategory, `${post.id}.json`);
+    
+    // Ensure directory exists
+    const dirPath = path.dirname(filePath);
+    await fs.mkdir(dirPath, { recursive: true });
+    
+    // Update lastModified
+    const updatedPost = {
+      ...post,
+      lastModified: new Date().toISOString()
+    };
+    
+    await fs.writeFile(filePath, JSON.stringify(updatedPost, null, 2));
+  } catch (error) {
+    console.error('Error saving blog post:', error);
+    throw error;
+  }
+}
+
+export async function deleteBlogPost(category: string, subcategory: string, slug: string): Promise<void> {
+  try {
+    const filePath = path.join(BLOGS_DIR, category, subcategory, `${slug}.json`);
+    await fs.unlink(filePath);
+  } catch (error) {
+    console.error('Error deleting blog post:', error);
+    throw error;
+  }
+}
+
+export async function saveCategories(categories: BlogCategory[]): Promise<void> {
+  try {
+    const categoriesPath = path.join(BLOGS_DIR, 'categories.json');
+    await fs.writeFile(categoriesPath, JSON.stringify(categories, null, 2));
+  } catch (error) {
+    console.error('Error saving categories:', error);
+    throw error;
+  }
 }
