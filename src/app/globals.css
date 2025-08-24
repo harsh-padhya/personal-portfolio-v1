@@ -1,6 +1,53 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Fira+Code:wght@300..700&display=swap');
 @import "tailwindcss";
 
+/* Custom highlight.js theme for terminal style */
+.hljs {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-section,
+.hljs-link {
+  color: #22c55e !important;
+}
+
+.hljs-string,
+.hljs-attr {
+  color: #eab308 !important;
+}
+
+.hljs-number,
+.hljs-meta {
+  color: #f97316 !important;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #6b7280 !important;
+  font-style: italic;
+}
+
+.hljs-function,
+.hljs-class {
+  color: #3b82f6 !important;
+}
+
+.hljs-variable,
+.hljs-template-variable {
+  color: #ef4444 !important;
+}
+
+.hljs-built_in,
+.hljs-type {
+  color: #8b5cf6 !important;
+}
+
 :root {
   /* Terminal theme colors */
   --background: #0f172a;

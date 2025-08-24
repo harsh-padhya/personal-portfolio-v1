@@ -7,10 +7,10 @@ import { cn } from '@/lib/utils';
 
 const navigation = [
   { name: 'Home', href: '/', icon: Terminal },
-  { name: 'About', href: '#about', icon: User },
-  { name: 'Experience', href: '#experience', icon: Code },
+  { name: 'About', href: '/#about', icon: User },
+  { name: 'Experience', href: '/#experience', icon: Code },
   { name: 'Blog', href: '/blog', icon: BookOpen },
-  { name: 'Contact', href: '#contact', icon: Mail },
+  { name: 'Contact', href: '/#contact', icon: Mail },
 ];
 
 export function Navigation() {
