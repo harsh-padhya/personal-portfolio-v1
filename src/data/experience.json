@@ -1,0 +1,82 @@
+[
+  {
+    "id": "senior-dev-techcorp",
+    "company": "TechCorp Solutions",
+    "position": "Senior Full-Stack Developer",
+    "startDate": "2023-01-01T00:00:00.000Z",
+    "endDate": null,
+    "duration": "2 years (Current)",
+    "description": "Leading development of customer-facing web applications serving 100K+ users. Architected microservices infrastructure that improved system performance by 40%. Mentored 3 junior developers and established code review standards that reduced bugs by 25%.",
+    "technologies": ["React", "TypeScript", "Node.js", "AWS", "Docker", "PostgreSQL", "Redis"],
+    "type": "work",
+    "featured": true,
+    "location": "San Francisco, CA",
+    "website": "https://techcorp.com"
+  },
+  {
+    "id": "fullstack-dev-innovate",
+    "company": "Innovate Digital",
+    "position": "Full-Stack Developer",
+    "startDate": "2021-06-01T00:00:00.000Z",
+    "endDate": "2022-12-31T00:00:00.000Z",
+    "duration": "1.5 years",
+    "description": "Developed and maintained e-commerce platforms handling $2M+ in monthly transactions. Implemented real-time features using WebSocket and improved mobile performance by 60%. Collaborated with design team to create responsive, accessible user interfaces.",
+    "technologies": ["React", "Node.js", "MongoDB", "Express.js", "Stripe API", "Socket.io"],
+    "type": "work",
+    "featured": true,
+    "location": "Remote",
+    "website": "https://innovatedigital.com"
+  },
+  {
+    "id": "frontend-dev-startupco",
+    "company": "StartupCo",
+    "position": "Frontend Developer",
+    "startDate": "2020-01-01T00:00:00.000Z",
+    "endDate": "2021-05-31T00:00:00.000Z",
+    "duration": "1.5 years",
+    "description": "Built responsive web applications using modern JavaScript frameworks. Collaborated closely with UX designers to implement pixel-perfect designs. Optimized application bundle size by 30% and improved Core Web Vitals scores.",
+    "technologies": ["React", "JavaScript", "Sass", "Webpack", "Jest"],
+    "type": "work",
+    "featured": false,
+    "location": "Austin, TX"
+  },
+  {
+    "id": "computer-science-degree",
+    "company": "University of California, Berkeley",
+    "position": "Bachelor of Science in Computer Science",
+    "startDate": "2016-08-01T00:00:00.000Z",
+    "endDate": "2020-05-31T00:00:00.000Z",
+    "duration": "4 years",
+    "description": "Comprehensive computer science education with focus on algorithms, data structures, and software engineering. Completed senior capstone project building a distributed system for real-time data processing. GPA: 3.7/4.0",
+    "technologies": ["Java", "Python", "C++", "SQL", "Linux"],
+    "type": "education",
+    "featured": true,
+    "location": "Berkeley, CA",
+    "website": "https://berkeley.edu"
+  },
+  {
+    "id": "aws-certified-developer",
+    "company": "Amazon Web Services",
+    "position": "AWS Certified Developer - Associate",
+    "startDate": "2023-03-15T00:00:00.000Z",
+    "endDate": null,
+    "duration": "Current",
+    "description": "Demonstrated expertise in developing and maintaining applications on the AWS platform. Proficient in AWS services including EC2, S3, Lambda, DynamoDB, and CloudFormation.",
+    "technologies": ["AWS", "Lambda", "DynamoDB", "S3", "CloudFormation"],
+    "type": "certification",
+    "featured": false
+  },
+  {
+    "id": "open-source-contrib",
+    "company": "Open Source Community",
+    "position": "Contributing Developer",
+    "startDate": "2021-01-01T00:00:00.000Z",
+    "endDate": null,
+    "duration": "4 years (Ongoing)",
+    "description": "Active contributor to various open source projects including React ecosystem libraries and Node.js tools. Maintained a personal library with 1K+ GitHub stars. Participated in Hacktoberfest for 3 consecutive years.",
+    "technologies": ["React", "Node.js", "TypeScript", "Jest", "GitHub Actions"],
+    "type": "project",
+    "featured": true,
+    "website": "https://github.com/alexjohnson"
+  }
+]

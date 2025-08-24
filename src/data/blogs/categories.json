@@ -1,0 +1,80 @@
+[
+  {
+    "id": "web-development",
+    "name": "Web Development",
+    "description": "Frontend and backend web development topics",
+    "icon": "Globe",
+    "subcategories": [
+      {
+        "id": "react",
+        "name": "React",
+        "description": "React.js tutorials, tips, and best practices",
+        "icon": "Code"
+      },
+      {
+        "id": "nodejs",
+        "name": "Node.js",
+        "description": "Backend development with Node.js",
+        "icon": "Server"
+      },
+      {
+        "id": "typescript",
+        "name": "TypeScript",
+        "description": "TypeScript development and type safety",
+        "icon": "FileText"
+      }
+    ]
+  },
+  {
+    "id": "devops",
+    "name": "DevOps",
+    "description": "Development operations, CI/CD, and infrastructure",
+    "icon": "Settings",
+    "subcategories": [
+      {
+        "id": "docker",
+        "name": "Docker",
+        "description": "Containerization with Docker",
+        "icon": "Package"
+      },
+      {
+        "id": "cicd",
+        "name": "CI/CD",
+        "description": "Continuous integration and deployment",
+        "icon": "GitBranch"
+      },
+      {
+        "id": "aws",
+        "name": "AWS",
+        "description": "Amazon Web Services and cloud computing",
+        "icon": "Cloud"
+      }
+    ]
+  },
+  {
+    "id": "career",
+    "name": "Career",
+    "description": "Career development, tips, and experiences",
+    "icon": "Briefcase",
+    "subcategories": [
+      {
+        "id": "growth",
+        "name": "Growth",
+        "description": "Professional development and career growth",
+        "icon": "TrendingUp"
+      },
+      {
+        "id": "tips",
+        "name": "Tips",
+        "description": "Career advice and practical tips",
+        "icon": "Lightbulb"
+      },
+      {
+        "id": "experiences",
+        "name": "Experiences",
+        "description": "Personal experiences and lessons learned",
+        "icon": "BookOpen"
+      }
+    ]
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "personal": {
+    "name": "Alex Johnson",
+    "title": "Senior Full-Stack Developer",
+    "email": "alex.johnson@example.com",
+    "location": "San Francisco, CA",
+    "bio": "Passionate full-stack developer with 5+ years of experience building scalable web applications. I specialize in React, Node.js, and cloud architecture, with a strong focus on performance optimization and developer experience. When I'm not coding, you'll find me contributing to open source projects, writing technical articles, or exploring the latest in web technologies.",
+    "avatar": "/images/avatar.jpg",
+    "resume": "/documents/alex-johnson-resume.pdf"
+  },
+  "social": {
+    "github": "https://github.com/alexjohnson",
+    "linkedin": "https://linkedin.com/in/alexjohnson-dev",
+    "twitter": "https://twitter.com/alexjohnson_dev",
+    "website": "https://alexjohnson.dev"
+  },
+  "hero": {
+    "tagline": "Building the web, one component at a time",
+    "description": "I craft exceptional digital experiences with clean code, thoughtful design, and a relentless focus on performance. Let's build something amazing together.",
+    "cta": "Let's Connect"
+  }
+}
