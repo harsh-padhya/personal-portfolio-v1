@@ -1,12 +1,12 @@
 // Client-side utilities for admin interface
-import { BlogPost, BlogListItem, BlogCategory } from '@/types/blog';
+import type { BlogPost, BlogCategory, BlogListItem } from '@/types/blog';
 
-// API Functions for client-side admin components
+// Blog CRUD operations
 export async function getAllBlogPostsClient(): Promise<BlogListItem[]> {
   try {
     const response = await fetch('/api/admin/blogs');
     if (!response.ok) {
-      throw new Error('Failed to fetch posts');
+      throw new Error('Failed to fetch blog posts');
     }
     return await response.json();
   } catch (error) {
@@ -19,10 +19,7 @@ export async function getBlogPostByIdClient(id: string): Promise<BlogPost | null
   try {
     const response = await fetch(`/api/admin/blogs?id=${id}`);
     if (!response.ok) {
-      if (response.status === 404) {
-        return null;
-      }
-      throw new Error('Failed to fetch post');
+      return null;
     }
     return await response.json();
   } catch (error) {
@@ -31,77 +28,67 @@ export async function getBlogPostByIdClient(id: string): Promise<BlogPost | null
   }
 }
 
-export async function saveBlogPostClient(post: BlogPost): Promise<void> {
-  const isNew = !post.id || post.id === '';
-  const method = isNew ? 'POST' : 'PUT';
-  
+export async function saveBlogPostClient(post: BlogPost): Promise<boolean> {
   try {
+    const method = post.id ? 'PUT' : 'POST';
     const response = await fetch('/api/admin/blogs', {
       method,
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(post),
+      body: JSON.stringify(post)
     });
 
-    if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.error || 'Failed to save post');
-    }
+    return response.ok;
   } catch (error) {
     console.error('Error saving blog post:', error);
-    throw error;
+    return false;
   }
 }
 
-export async function deleteBlogPostClient(id: string, category: string, subcategory: string): Promise<void> {
+export async function deleteBlogPostClient(id: string, category: string, subcategory: string): Promise<boolean> {
   try {
     const response = await fetch(`/api/admin/blogs?id=${id}&category=${category}&subcategory=${subcategory}`, {
-      method: 'DELETE',
+      method: 'DELETE'
     });
 
-    if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.error || 'Failed to delete post');
-    }
+    return response.ok;
   } catch (error) {
     console.error('Error deleting blog post:', error);
-    throw error;
+    return false;
   }
 }
 
+// Categories
 export async function getCategoriesClient(): Promise<BlogCategory[]> {
   try {
-    // For now, return default categories since we don't have categories API yet
+    // For now, return default categories since we haven't implemented categories API yet
     const defaultCategories: BlogCategory[] = [
       {
         id: 'web-development',
         name: 'Web Development',
-        description: 'Frontend, backend, and full-stack development topics',
+        description: 'Frontend and backend web development topics',
         subcategories: [
-          { id: 'frontend', name: 'Frontend', description: 'React, Vue, Angular, CSS, HTML' },
-          { id: 'backend', name: 'Backend', description: 'Node.js, Python, databases, APIs' },
-          { id: 'fullstack', name: 'Full Stack', description: 'End-to-end development projects' }
+          { id: 'react', name: 'React', description: 'React.js tutorials and tips' },
+          { id: 'nodejs', name: 'Node.js', description: 'Backend development with Node.js' },
+          { id: 'typescript', name: 'TypeScript', description: 'TypeScript development' }
         ]
       },
       {
         id: 'devops',
         name: 'DevOps',
-        description: 'Deployment, automation, and infrastructure topics',
+        description: 'DevOps practices and tools',
         subcategories: [
-          { id: 'deployment', name: 'Deployment', description: 'CI/CD, hosting, containerization' },
-          { id: 'monitoring', name: 'Monitoring', description: 'Logging, metrics, observability' },
-          { id: 'automation', name: 'Automation', description: 'Scripts, workflows, tools' }
+          { id: 'docker', name: 'Docker', description: 'Containerization with Docker' },
+          { id: 'kubernetes', name: 'Kubernetes', description: 'Container orchestration' }
         ]
       },
       {
         id: 'career',
         name: 'Career',
-        description: 'Professional development and career advice',
+        description: 'Career development and advice',
         subcategories: [
-          { id: 'growth', name: 'Growth', description: 'Career progression, leadership' },
-          { id: 'skills', name: 'Skills', description: 'Learning, certifications, technologies' },
-          { id: 'interviews', name: 'Interviews', description: 'Interview prep, tips, experiences' }
+          { id: 'interviews', name: 'Interviews', description: 'Technical interview preparation' }
         ]
       }
     ];
@@ -110,5 +97,67 @@ export async function getCategoriesClient(): Promise<BlogCategory[]> {
   } catch (error) {
     console.error('Error fetching categories:', error);
     return [];
+  }
+}
+
+// Experience CRUD operations
+export async function getAllExperienceClient() {
+  try {
+    const response = await fetch('/api/admin/experience');
+    if (!response.ok) {
+      throw new Error('Failed to fetch experience data');
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching experience:', error);
+    return [];
+  }
+}
+
+export async function saveExperienceClient(experienceData: any): Promise<boolean> {
+  try {
+    const response = await fetch('/api/admin/experience', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(experienceData)
+    });
+
+    return response.ok;
+  } catch (error) {
+    console.error('Error saving experience:', error);
+    return false;
+  }
+}
+
+// Skills CRUD operations
+export async function getAllSkillsClient() {
+  try {
+    const response = await fetch('/api/admin/skills');
+    if (!response.ok) {
+      throw new Error('Failed to fetch skills data');
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching skills:', error);
+    return [];
+  }
+}
+
+export async function saveSkillsClient(skillsData: any): Promise<boolean> {
+  try {
+    const response = await fetch('/api/admin/skills', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(skillsData)
+    });
+
+    return response.ok;
+  } catch (error) {
+    console.error('Error saving skills:', error);
+    return false;
   }
 }

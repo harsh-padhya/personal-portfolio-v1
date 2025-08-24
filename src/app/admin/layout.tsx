@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { 
-  LayoutDashboard, 
+  LayoutDashboard as Home, 
   FileText, 
   FolderOpen, 
   User, 
@@ -14,9 +14,11 @@ import {
 import { cn } from '@/lib/utils';
 
 const navigation = [
-  { name: 'Dashboard', href: '/admin', icon: LayoutDashboard },
+  { name: 'Dashboard', href: '/admin', icon: Home },
   { name: 'Blog Posts', href: '/admin/blogs', icon: FileText },
   { name: 'Categories', href: '/admin/categories', icon: FolderOpen },
+  { name: 'Experience', href: '/admin/experience', icon: User },
+  { name: 'Skills', href: '/admin/skills', icon: Settings },
   { name: 'Profile', href: '/admin/profile', icon: User },
   { name: 'Settings', href: '/admin/settings', icon: Settings },
 ];

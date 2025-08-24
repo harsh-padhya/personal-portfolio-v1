@@ -5,59 +5,40 @@ import {
   Save, 
   User, 
   Mail, 
-  MapPin, 
-  Phone,
   Globe,
   Github,
   Linkedin,
-  Twitter,
-  FileText,
-  Plus,
-  Minus
+  Twitter
 } from 'lucide-react';
 import { TerminalCard } from '@/components/ui/terminal-card';
 import { TerminalButton } from '@/components/ui/terminal-button';
-
-interface ProfileData {
-  name: string;
-  title: string;
-  email: string;
-  phone: string;
-  location: string;
-  website: string;
-  bio: string;
-  avatar: string;
-  social: {
-    github: string;
-    linkedin: string;
-    twitter: string;
-  };
-  skills: string[];
-  interests: string[];
-}
+import { Profile } from '@/types/portfolio';
 
 export default function ProfileAdminPage() {
-  const [profile, setProfile] = useState<ProfileData>({
-    name: '',
-    title: '',
-    email: '',
-    phone: '',
-    location: '',
-    website: '',
-    bio: '',
-    avatar: '',
+  const [profile, setProfile] = useState<Profile>({
+    personal: {
+      name: '',
+      title: '',
+      email: '',
+      location: '',
+      bio: '',
+      avatar: '',
+      resume: ''
+    },
     social: {
       github: '',
       linkedin: '',
-      twitter: ''
+      twitter: '',
+      website: ''
     },
-    skills: [],
-    interests: []
+    hero: {
+      tagline: '',
+      description: '',
+      cta: ''
+    }
   });
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
-  const [newSkill, setNewSkill] = useState('');
-  const [newInterest, setNewInterest] = useState('');
 
   useEffect(() => {
     async function loadProfile() {
@@ -69,21 +50,26 @@ export default function ProfileAdminPage() {
         
         const data = await response.json();
         setProfile({
-          name: data.name || '',
-          title: data.title || '',
-          email: data.contact?.email || '',
-          phone: data.contact?.phone || '',
-          location: data.contact?.location || '',
-          website: data.contact?.website || '',
-          bio: data.bio || '',
-          avatar: data.avatar || '',
+          personal: {
+            name: data.personal?.name || '',
+            title: data.personal?.title || '',
+            email: data.personal?.email || '',
+            location: data.personal?.location || '',
+            bio: data.personal?.bio || '',
+            avatar: data.personal?.avatar || '',
+            resume: data.personal?.resume || ''
+          },
           social: {
             github: data.social?.github || '',
             linkedin: data.social?.linkedin || '',
-            twitter: data.social?.twitter || ''
+            twitter: data.social?.twitter || '',
+            website: data.social?.website || ''
           },
-          skills: data.skills?.map((skill: any) => skill.name) || [],
-          interests: data.interests || []
+          hero: {
+            tagline: data.hero?.tagline || '',
+            description: data.hero?.description || '',
+            cta: data.hero?.cta || ''
+          }
         });
       } catch (error) {
         console.error('Error loading profile:', error);
@@ -118,40 +104,6 @@ export default function ProfileAdminPage() {
     } finally {
       setSaving(false);
     }
-  };
-
-  const addSkill = () => {
-    if (newSkill.trim() && !profile.skills.includes(newSkill.trim())) {
-      setProfile(prev => ({
-        ...prev,
-        skills: [...prev.skills, newSkill.trim()]
-      }));
-      setNewSkill('');
-    }
-  };
-
-  const removeSkill = (skill: string) => {
-    setProfile(prev => ({
-      ...prev,
-      skills: prev.skills.filter(s => s !== skill)
-    }));
-  };
-
-  const addInterest = () => {
-    if (newInterest.trim() && !profile.interests.includes(newInterest.trim())) {
-      setProfile(prev => ({
-        ...prev,
-        interests: [...prev.interests, newInterest.trim()]
-      }));
-      setNewInterest('');
-    }
-  };
-
-  const removeInterest = (interest: string) => {
-    setProfile(prev => ({
-      ...prev,
-      interests: prev.interests.filter(i => i !== interest)
-    }));
   };
 
   if (loading) {
@@ -200,8 +152,11 @@ export default function ProfileAdminPage() {
               <input
                 type="text"
                 className="w-full px-3 py-2 bg-terminal-background border border-terminal-border rounded-md text-terminal-foreground focus:outline-none focus:ring-2 focus:ring-terminal-accent focus:border-transparent"
-                value={profile.name}
-                onChange={(e) => setProfile(prev => ({ ...prev, name: e.target.value }))}
+                value={profile.personal.name}
+                onChange={(e) => setProfile(prev => ({
+                  ...prev,
+                  personal: { ...prev.personal, name: e.target.value }
+                }))}
               />
             </div>
 
@@ -212,8 +167,11 @@ export default function ProfileAdminPage() {
               <input
                 type="text"
                 className="w-full px-3 py-2 bg-terminal-background border border-terminal-border rounded-md text-terminal-foreground focus:outline-none focus:ring-2 focus:ring-terminal-accent focus:border-transparent"
-                value={profile.title}
-                onChange={(e) => setProfile(prev => ({ ...prev, title: e.target.value }))}
+                value={profile.personal.title}
+                onChange={(e) => setProfile(prev => ({
+                  ...prev,
+                  personal: { ...prev.personal, title: e.target.value }
+                }))}
               />
             </div>
 
@@ -224,8 +182,11 @@ export default function ProfileAdminPage() {
               <textarea
                 rows={4}
                 className="w-full px-3 py-2 bg-terminal-background border border-terminal-border rounded-md text-terminal-foreground focus:outline-none focus:ring-2 focus:ring-terminal-accent focus:border-transparent"
-                value={profile.bio}
-                onChange={(e) => setProfile(prev => ({ ...prev, bio: e.target.value }))}
+                value={profile.personal.bio}
+                onChange={(e) => setProfile(prev => ({
+                  ...prev,
+                  personal: { ...prev.personal, bio: e.target.value }
+                }))}
               />
             </div>
 
@@ -236,8 +197,11 @@ export default function ProfileAdminPage() {
               <input
                 type="url"
                 className="w-full px-3 py-2 bg-terminal-background border border-terminal-border rounded-md text-terminal-foreground focus:outline-none focus:ring-2 focus:ring-terminal-accent focus:border-transparent"
-                value={profile.avatar}
-                onChange={(e) => setProfile(prev => ({ ...prev, avatar: e.target.value }))}
+                value={profile.personal.avatar}
+                onChange={(e) => setProfile(prev => ({
+                  ...prev,
+                  personal: { ...prev.personal, avatar: e.target.value }
+                }))}
               />
             </div>
           </div>
@@ -258,20 +222,11 @@ export default function ProfileAdminPage() {
               <input
                 type="email"
                 className="w-full px-3 py-2 bg-terminal-background border border-terminal-border rounded-md text-terminal-foreground focus:outline-none focus:ring-2 focus:ring-terminal-accent focus:border-transparent"
-                value={profile.email}
-                onChange={(e) => setProfile(prev => ({ ...prev, email: e.target.value }))}
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-terminal-foreground mb-2">
-                Phone
-              </label>
-              <input
-                type="tel"
-                className="w-full px-3 py-2 bg-terminal-background border border-terminal-border rounded-md text-terminal-foreground focus:outline-none focus:ring-2 focus:ring-terminal-accent focus:border-transparent"
-                value={profile.phone}
-                onChange={(e) => setProfile(prev => ({ ...prev, phone: e.target.value }))}
+                value={profile.personal.email}
+                onChange={(e) => setProfile(prev => ({
+                  ...prev,
+                  personal: { ...prev.personal, email: e.target.value }
+                }))}
               />
             </div>
 
@@ -282,8 +237,11 @@ export default function ProfileAdminPage() {
               <input
                 type="text"
                 className="w-full px-3 py-2 bg-terminal-background border border-terminal-border rounded-md text-terminal-foreground focus:outline-none focus:ring-2 focus:ring-terminal-accent focus:border-transparent"
-                value={profile.location}
-                onChange={(e) => setProfile(prev => ({ ...prev, location: e.target.value }))}
+                value={profile.personal.location}
+                onChange={(e) => setProfile(prev => ({
+                  ...prev,
+                  personal: { ...prev.personal, location: e.target.value }
+                }))}
               />
             </div>
 
@@ -294,8 +252,11 @@ export default function ProfileAdminPage() {
               <input
                 type="url"
                 className="w-full px-3 py-2 bg-terminal-background border border-terminal-border rounded-md text-terminal-foreground focus:outline-none focus:ring-2 focus:ring-terminal-accent focus:border-transparent"
-                value={profile.website}
-                onChange={(e) => setProfile(prev => ({ ...prev, website: e.target.value }))}
+                value={profile.social.website}
+                onChange={(e) => setProfile(prev => ({
+                  ...prev,
+                  social: { ...prev.social, website: e.target.value }
+                }))}
               />
             </div>
           </div>
@@ -355,47 +316,6 @@ export default function ProfileAdminPage() {
                   social: { ...prev.social, twitter: e.target.value }
                 }))}
               />
-            </div>
-          </div>
-        </TerminalCard>
-
-        {/* Skills */}
-        <TerminalCard>
-          <h2 className="text-lg font-semibold text-terminal-accent font-mono mb-4">
-            <FileText className="h-5 w-5 inline mr-2" />
-            Skills
-          </h2>
-          
-          <div className="space-y-4">
-            <div className="flex space-x-2">
-              <input
-                type="text"
-                placeholder="Add a skill..."
-                className="flex-1 px-3 py-2 bg-terminal-background border border-terminal-border rounded-md text-terminal-foreground focus:outline-none focus:ring-2 focus:ring-terminal-accent focus:border-transparent"
-                value={newSkill}
-                onChange={(e) => setNewSkill(e.target.value)}
-                onKeyPress={(e) => e.key === 'Enter' && addSkill()}
-              />
-              <TerminalButton onClick={addSkill} size="sm">
-                <Plus className="h-4 w-4" />
-              </TerminalButton>
-            </div>
-
-            <div className="flex flex-wrap gap-2">
-              {profile.skills.map((skill) => (
-                <span
-                  key={skill}
-                  className="inline-flex items-center px-3 py-1 rounded-md bg-terminal-accent/20 text-terminal-accent border border-terminal-accent/30"
-                >
-                  {skill}
-                  <button
-                    onClick={() => removeSkill(skill)}
-                    className="ml-2 text-terminal-accent/60 hover:text-terminal-accent"
-                  >
-                    <Minus className="h-3 w-3" />
-                  </button>
-                </span>
-              ))}
             </div>
           </div>
         </TerminalCard>
