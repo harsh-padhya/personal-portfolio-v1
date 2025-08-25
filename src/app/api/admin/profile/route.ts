@@ -24,36 +24,36 @@ export async function PUT(request: NextRequest) {
     const profileData = await request.json();
     
     // Validate required fields
-    if (!profileData.name || !profileData.title) {
+    if (!profileData.personal?.name || !profileData.personal?.title) {
       return NextResponse.json(
         { error: 'Name and title are required' },
         { status: 400 }
       );
     }
     
-    // Transform the admin profile data to match the existing profile format
+    // The profileData should already be in the correct nested format from the admin form
+    // Just validate the structure and save it
     const formattedProfile = {
-      name: profileData.name,
-      title: profileData.title,
-      bio: profileData.bio,
-      avatar: profileData.avatar,
-      contact: {
-        email: profileData.email,
-        phone: profileData.phone,
-        location: profileData.location,
-        website: profileData.website
+      personal: {
+        name: profileData.personal?.name || '',
+        title: profileData.personal?.title || '',
+        email: profileData.personal?.email || '',
+        location: profileData.personal?.location || '',
+        bio: profileData.personal?.bio || '',
+        avatar: profileData.personal?.avatar || '',
+        resume: profileData.personal?.resume || ''
       },
       social: {
         github: profileData.social?.github || '',
         linkedin: profileData.social?.linkedin || '',
-        twitter: profileData.social?.twitter || ''
+        twitter: profileData.social?.twitter || '',
+        website: profileData.social?.website || ''
       },
-      skills: profileData.skills?.map((skill: string) => ({
-        name: skill,
-        level: 'intermediate', // Default level
-        category: 'technical' // Default category
-      })) || [],
-      interests: profileData.interests || []
+      hero: {
+        tagline: profileData.hero?.tagline || '',
+        description: profileData.hero?.description || '',
+        cta: profileData.hero?.cta || ''
+      }
     };
     
     await fs.writeFile(PROFILE_PATH, JSON.stringify(formattedProfile, null, 2));

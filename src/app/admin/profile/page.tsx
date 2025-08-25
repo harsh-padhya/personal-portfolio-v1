@@ -8,7 +8,10 @@ import {
   Globe,
   Github,
   Linkedin,
-  Twitter
+  Twitter,
+  Target,
+  MessageSquare,
+  Zap
 } from 'lucide-react';
 import { TerminalCard } from '@/components/ui/terminal-card';
 import { TerminalButton } from '@/components/ui/terminal-button';
@@ -204,6 +207,21 @@ export default function ProfileAdminPage() {
                 }))}
               />
             </div>
+
+            <div>
+              <label className="block text-sm font-medium text-terminal-foreground mb-2">
+                Resume URL
+              </label>
+              <input
+                type="url"
+                className="w-full px-3 py-2 bg-terminal-background border border-terminal-border rounded-md text-terminal-foreground focus:outline-none focus:ring-2 focus:ring-terminal-accent focus:border-transparent"
+                value={profile.personal.resume}
+                onChange={(e) => setProfile(prev => ({
+                  ...prev,
+                  personal: { ...prev.personal, resume: e.target.value }
+                }))}
+              />
+            </div>
           </div>
         </TerminalCard>
 
@@ -315,6 +333,64 @@ export default function ProfileAdminPage() {
                   ...prev, 
                   social: { ...prev.social, twitter: e.target.value }
                 }))}
+              />
+            </div>
+          </div>
+        </TerminalCard>
+
+        {/* Hero Section */}
+        <TerminalCard>
+          <h2 className="text-lg font-semibold text-terminal-accent font-mono mb-4">
+            <Target className="h-5 w-5 inline mr-2" />
+            Hero Section
+          </h2>
+          
+          <div className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium text-terminal-foreground mb-2">
+                Tagline
+              </label>
+              <input
+                type="text"
+                className="w-full px-3 py-2 bg-terminal-background border border-terminal-border rounded-md text-terminal-foreground focus:outline-none focus:ring-2 focus:ring-terminal-accent focus:border-transparent"
+                value={profile.hero.tagline}
+                onChange={(e) => setProfile(prev => ({ 
+                  ...prev, 
+                  hero: { ...prev.hero, tagline: e.target.value }
+                }))}
+                placeholder="Your main tagline..."
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-terminal-foreground mb-2">
+                Description
+              </label>
+              <textarea
+                rows={3}
+                className="w-full px-3 py-2 bg-terminal-background border border-terminal-border rounded-md text-terminal-foreground focus:outline-none focus:ring-2 focus:ring-terminal-accent focus:border-transparent"
+                value={profile.hero.description}
+                onChange={(e) => setProfile(prev => ({ 
+                  ...prev, 
+                  hero: { ...prev.hero, description: e.target.value }
+                }))}
+                placeholder="Brief description for the hero section..."
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-terminal-foreground mb-2">
+                Call to Action (CTA)
+              </label>
+              <input
+                type="text"
+                className="w-full px-3 py-2 bg-terminal-background border border-terminal-border rounded-md text-terminal-foreground focus:outline-none focus:ring-2 focus:ring-terminal-accent focus:border-transparent"
+                value={profile.hero.cta}
+                onChange={(e) => setProfile(prev => ({ 
+                  ...prev, 
+                  hero: { ...prev.hero, cta: e.target.value }
+                }))}
+                placeholder="Primary button text..."
               />
             </div>
           </div>
