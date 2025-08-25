@@ -42,28 +42,28 @@ export function ContactSection({ profile }: ContactSectionProps) {
   };
 
   return (
-    <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-terminal-foreground mb-4">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl font-bold text-terminal-foreground mb-4">
             <span className="text-terminal-accent font-mono">$</span> ./contact.sh
           </h2>
-          <p className="text-terminal-muted font-mono max-w-2xl mx-auto">
+          <p className="text-terminal-muted font-mono max-w-2xl mx-auto text-sm sm:text-base px-2">
             {'>'} Let's connect and build something amazing together
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
+        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8">
           {/* Contact Information */}
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             <TerminalCard title="contact-info.json" variant="glass">
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 <div>
-                  <h3 className="text-xl font-semibold text-terminal-accent mb-4 font-mono">
+                  <h3 className="text-lg sm:text-xl font-semibold text-terminal-accent mb-3 sm:mb-4 font-mono">
                     Get In Touch
                   </h3>
-                  <p className="text-terminal-foreground leading-relaxed mb-6">
+                  <p className="text-terminal-foreground leading-relaxed mb-4 sm:mb-6 text-sm sm:text-base">
                     I'm always open to discussing new opportunities, interesting projects, 
                     or just having a chat about technology. Whether you're looking to 
                     collaborate or just want to say hello, I'd love to hear from you!
@@ -71,13 +71,13 @@ export function ContactSection({ profile }: ContactSectionProps) {
                 </div>
 
                 {/* Contact Details */}
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3 text-terminal-foreground">
-                    <Mail className="h-5 w-5 text-terminal-accent" />
-                    <span className="font-mono text-sm">email:</span>
+                <div className="space-y-3 sm:space-y-4">
+                  <div className="flex items-start sm:items-center gap-2 sm:gap-3 text-terminal-foreground text-sm sm:text-base">
+                    <Mail className="h-4 w-4 sm:h-5 sm:w-5 text-terminal-accent flex-shrink-0 mt-0.5 sm:mt-0" />
+                    <span className="font-mono text-xs sm:text-sm">email:</span>
                     <a 
                       href={`mailto:${profile.personal.email}`}
-                      className="text-terminal-accent hover:underline"
+                      className="text-terminal-accent hover:underline break-all"
                     >
                       {profile.personal.email}
                     </a>

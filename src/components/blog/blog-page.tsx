@@ -50,58 +50,58 @@ export function BlogPage({ posts, categories }: BlogPageProps) {
 
   return (
     <div className="min-h-screen bg-terminal-background pt-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-3xl sm:text-4xl font-bold text-terminal-foreground mb-4">
+        <div className="text-center mb-12 sm:mb-16">
+          <h1 className="text-2xl xs:text-3xl sm:text-4xl font-bold text-terminal-foreground mb-4">
             <span className="text-terminal-accent font-mono">$</span> cat blog/
           </h1>
-          <p className="text-terminal-muted font-mono max-w-2xl mx-auto">
+          <p className="text-terminal-muted font-mono max-w-2xl mx-auto text-sm sm:text-base px-2">
             {'>'} Exploring web development, DevOps, and career insights
           </p>
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12">
           <TerminalCard variant="glass" className="text-center">
             <div className="space-y-2">
-              <BookOpen className="h-8 w-8 text-terminal-accent mx-auto" />
-              <div className="text-2xl font-bold text-terminal-accent font-mono">
+              <BookOpen className="h-6 w-6 sm:h-8 sm:w-8 text-terminal-accent mx-auto" />
+              <div className="text-xl sm:text-2xl font-bold text-terminal-accent font-mono">
                 {posts.filter(p => p.status === 'published').length}
               </div>
-              <div className="text-terminal-foreground">Published Posts</div>
+              <div className="text-terminal-foreground text-sm sm:text-base">Published Posts</div>
             </div>
           </TerminalCard>
           
           <TerminalCard variant="glass" className="text-center">
             <div className="space-y-2">
-              <TrendingUp className="h-8 w-8 text-terminal-accent mx-auto" />
-              <div className="text-2xl font-bold text-terminal-accent font-mono">
+              <TrendingUp className="h-6 w-6 sm:h-8 sm:w-8 text-terminal-accent mx-auto" />
+              <div className="text-xl sm:text-2xl font-bold text-terminal-accent font-mono">
                 {categories.length}
               </div>
-              <div className="text-terminal-foreground">Categories</div>
+              <div className="text-terminal-foreground text-sm sm:text-base">Categories</div>
             </div>
           </TerminalCard>
           
-          <TerminalCard variant="glass" className="text-center">
+          <TerminalCard variant="glass" className="text-center xs:col-span-2 sm:col-span-1">
             <div className="space-y-2">
-              <Search className="h-8 w-8 text-terminal-accent mx-auto" />
-              <div className="text-2xl font-bold text-terminal-accent font-mono">
+              <Search className="h-6 w-6 sm:h-8 sm:w-8 text-terminal-accent mx-auto" />
+              <div className="text-xl sm:text-2xl font-bold text-terminal-accent font-mono">
                 {filteredPosts.length}
               </div>
-              <div className="text-terminal-foreground">
+              <div className="text-terminal-foreground text-sm sm:text-base">
                 {searchTerm || selectedCategory ? 'Filtered' : 'Total'} Results
               </div>
             </div>
           </TerminalCard>
         </div>
 
-        <div className="grid lg:grid-cols-4 gap-8">
+        <div className="grid lg:grid-cols-4 gap-6 sm:gap-8">
           {/* Sidebar */}
-          <div className="lg:col-span-1 space-y-6">
+          <div className="lg:col-span-1 space-y-4 sm:space-y-6">
             {/* Search */}
             <TerminalCard title="search.sh" variant="glass">
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 <div className="relative">
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-terminal-muted" />
                   <input
@@ -109,7 +109,7 @@ export function BlogPage({ posts, categories }: BlogPageProps) {
                     placeholder="Search posts..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full bg-terminal-surface border border-terminal-border rounded pl-10 pr-4 py-2 text-terminal-foreground font-mono focus:border-terminal-accent focus:outline-none transition-colors"
+                    className="form-input-mobile pl-10 text-sm sm:text-base"
                   />
                 </div>
                 {searchTerm && (

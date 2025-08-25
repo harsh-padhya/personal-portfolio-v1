@@ -21,17 +21,17 @@ function SkillBar({ skill }: { skill: Skill }) {
   return (
     <div className="space-y-2">
       <div className="flex justify-between items-center">
-        <span className="text-terminal-foreground font-medium">{skill.name}</span>
-        <span className="text-terminal-muted text-sm font-mono">{skill.years}y</span>
+        <span className="text-terminal-foreground font-medium text-sm sm:text-base">{skill.name}</span>
+        <span className="text-terminal-muted text-xs sm:text-sm font-mono">{skill.years}y</span>
       </div>
-      <div className="relative h-2 bg-terminal-muted rounded-full overflow-hidden">
+      <div className="relative h-1.5 sm:h-2 bg-terminal-muted rounded-full overflow-hidden">
         <div 
           className="absolute left-0 top-0 h-full bg-gradient-to-r from-terminal-accent to-terminal-accent/80 rounded-full transition-all duration-1000 ease-out"
           style={{ width: `${percentage}%` }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-pulse" />
       </div>
-      <p className="text-terminal-muted text-sm">{skill.description}</p>
+      <p className="text-terminal-muted text-xs sm:text-sm">{skill.description}</p>
     </div>
   );
 }
@@ -45,15 +45,15 @@ function SkillCategoryCard({ category }: { category: SkillCategory }) {
       variant="glass"
       className="h-full"
     >
-      <div className="space-y-6">
-        <div className="flex items-center gap-3">
-          <IconComponent className="h-6 w-6 text-terminal-accent" />
-          <h3 className="text-xl font-semibold text-terminal-foreground font-mono">
+      <div className="space-y-4 sm:space-y-6">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <IconComponent className="h-5 w-5 sm:h-6 sm:w-6 text-terminal-accent flex-shrink-0" />
+          <h3 className="text-lg sm:text-xl font-semibold text-terminal-foreground font-mono">
             {category.name}
           </h3>
         </div>
         
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
           {category.skills.map((skill) => (
             <SkillBar key={skill.name} skill={skill} />
           ))}
@@ -65,14 +65,14 @@ function SkillCategoryCard({ category }: { category: SkillCategory }) {
 
 export function SkillsSection({ skills }: SkillsSectionProps) {
   return (
-    <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8">
+    <section id="skills" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-terminal-foreground mb-4">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl font-bold text-terminal-foreground mb-4">
             <span className="text-terminal-accent font-mono">$</span> ls -la skills/
           </h2>
-          <p className="text-terminal-muted font-mono max-w-2xl mx-auto">
+          <p className="text-terminal-muted font-mono max-w-2xl mx-auto text-sm sm:text-base px-2">
             {'>'} Exploring my technical expertise and proficiency levels
           </p>
         </div>

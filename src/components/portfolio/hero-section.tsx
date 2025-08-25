@@ -24,8 +24,8 @@ export function HeroSection({ profile }: HeroSectionProps) {
     <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16">
       <div className="max-w-4xl mx-auto text-center">
         {/* ASCII Art Terminal Header */}
-        <div className="mb-8 font-mono text-terminal-accent text-xs sm:text-sm leading-tight">
-          <pre className="inline-block text-left">
+        <div className="mb-6 sm:mb-8 font-mono text-terminal-accent text-xs sm:text-sm leading-tight overflow-x-auto">
+          <pre className="inline-block text-left whitespace-pre text-[10px] xs:text-xs sm:text-sm">
 {`╭──────────────────────────────────────╮
 │  $ whoami                            │
 │  > ${profile.personal.name.padEnd(30)} │
@@ -38,7 +38,7 @@ export function HeroSection({ profile }: HeroSectionProps) {
         </div>
 
         {/* Main Heading */}
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-terminal-foreground mb-4">
+        <h1 className="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-bold text-terminal-foreground mb-4">
           <span className="text-terminal-accent font-mono">{'>'}</span>{' '}
           <TypingAnimation 
             text={profile.personal.name}
@@ -48,19 +48,19 @@ export function HeroSection({ profile }: HeroSectionProps) {
         </h1>
 
         {/* Title */}
-        <h2 className="text-xl sm:text-2xl lg:text-3xl text-terminal-muted mb-6 font-mono">
+        <h2 className="text-lg xs:text-xl sm:text-2xl lg:text-3xl text-terminal-muted mb-4 sm:mb-6 font-mono px-2">
           {profile.personal.title}
         </h2>
 
         {/* Tagline */}
-        <p className="text-lg sm:text-xl text-terminal-accent mb-8 font-mono">
+        <p className="text-base xs:text-lg sm:text-xl text-terminal-accent mb-6 sm:mb-8 font-mono px-2">
           {profile.hero.tagline}
         </p>
 
         {/* Description */}
         {showDescription && (
-          <div className="mb-12 opacity-0 animate-fade-in-up">
-            <p className="text-lg text-terminal-foreground max-w-3xl mx-auto leading-relaxed">
+          <div className="mb-8 sm:mb-12 opacity-0 animate-fade-in-up">
+            <p className="text-sm xs:text-base sm:text-lg text-terminal-foreground max-w-3xl mx-auto leading-relaxed px-2">
               <TypingAnimation 
                 text={profile.hero.description}
                 speed={30}
@@ -73,38 +73,39 @@ export function HeroSection({ profile }: HeroSectionProps) {
 
         {/* Action Buttons */}
         {showButtons && (
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
+          <div className="flex flex-col xs:flex-row gap-3 sm:gap-4 justify-center items-center mb-8 sm:mb-12 opacity-0 animate-fade-in-up px-4" style={{ animationDelay: '0.5s' }}>
             <TerminalButton
               variant="primary"
               size="lg"
               onClick={() => scrollToSection('contact')}
-              className="group"
+              className="group w-full xs:w-auto"
             >
-              <Mail className="h-5 w-5 mr-2 group-hover:animate-bounce" />
-              {profile.hero.cta}
+              <Mail className="h-4 w-4 sm:h-5 sm:w-5 mr-2 group-hover:animate-bounce" />
+              <span className="text-sm sm:text-base">{profile.hero.cta}</span>
             </TerminalButton>
             
             <TerminalButton
               variant="secondary"
               size="lg"
               onClick={() => window.open(profile.personal.resume, '_blank')}
+              className="w-full xs:w-auto"
             >
-              <Download className="h-5 w-5 mr-2" />
-              Download Resume
+              <Download className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
+              <span className="text-sm sm:text-base">Download Resume</span>
             </TerminalButton>
           </div>
         )}
 
         {/* Social Links */}
         {showButtons && (
-          <div className="flex justify-center space-x-6 mb-12 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.7s' }}>
+          <div className="flex justify-center space-x-4 sm:space-x-6 mb-8 sm:mb-12 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.7s' }}>
             <a
               href={profile.social.github}
               target="_blank"
               rel="noopener noreferrer"
               className="text-terminal-muted hover:text-terminal-accent transition-colors duration-200 hover:scale-110 transform"
             >
-              <Github className="h-6 w-6" />
+              <Github className="h-5 w-5 sm:h-6 sm:w-6" />
               <span className="sr-only">GitHub</span>
             </a>
             <a
@@ -113,7 +114,7 @@ export function HeroSection({ profile }: HeroSectionProps) {
               rel="noopener noreferrer"
               className="text-terminal-muted hover:text-terminal-accent transition-colors duration-200 hover:scale-110 transform"
             >
-              <Linkedin className="h-6 w-6" />
+              <Linkedin className="h-5 w-5 sm:h-6 sm:w-6" />
               <span className="sr-only">LinkedIn</span>
             </a>
             {profile.social.twitter && (
@@ -123,7 +124,7 @@ export function HeroSection({ profile }: HeroSectionProps) {
                 rel="noopener noreferrer"
                 className="text-terminal-muted hover:text-terminal-accent transition-colors duration-200 hover:scale-110 transform"
               >
-                <Twitter className="h-6 w-6" />
+                <Twitter className="h-5 w-5 sm:h-6 sm:w-6" />
                 <span className="sr-only">Twitter</span>
               </a>
             )}
@@ -137,7 +138,7 @@ export function HeroSection({ profile }: HeroSectionProps) {
               onClick={() => scrollToSection('about')}
               className="text-terminal-muted hover:text-terminal-accent transition-colors duration-200 animate-bounce"
             >
-              <ArrowDown className="h-6 w-6 mx-auto" />
+              <ArrowDown className="h-5 w-5 sm:h-6 sm:w-6 mx-auto" />
               <span className="sr-only">Scroll to about section</span>
             </button>
           </div>

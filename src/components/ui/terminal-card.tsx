@@ -20,16 +20,16 @@ export function TerminalCard({ children, title, className, variant = 'default' }
   return (
     <div className={cn(baseClasses, variantClasses[variant], className)}>
       {title && (
-        <div className="bg-terminal-surface border-b border-terminal-border px-4 py-2 flex items-center gap-2">
+        <div className="bg-terminal-surface border-b border-terminal-border px-3 sm:px-4 py-2 flex items-center gap-2">
           <div className="flex gap-1">
-            <div className="w-3 h-3 rounded-full bg-red-500"></div>
-            <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-            <div className="w-3 h-3 rounded-full bg-green-500"></div>
+            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500"></div>
+            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500"></div>
+            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500"></div>
           </div>
-          <span className="text-terminal-foreground text-sm font-mono ml-2">{title}</span>
+          <span className="text-terminal-foreground text-xs sm:text-sm font-mono ml-1 sm:ml-2 truncate">{title}</span>
         </div>
       )}
-      <div className="p-6">
+      <div className="p-4 sm:p-6">
         {children}
       </div>
     </div>
