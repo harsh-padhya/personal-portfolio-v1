@@ -1,6 +1,19 @@
 import { notFound } from 'next/navigation';
 import { BlogPostPage } from '@/components/blog/blog-post-page';
 import { getBlogPost, getAllBlogPosts, getBlogPostsByCategory } from '@/lib/blog-utils';
+import { readFileSync } from 'fs';
+import { join } from 'path';
+import { Profile } from '@/types/profile';
+
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
+
+// Load profile data for dynamic metadata
+function getProfileData(): Profile {
+  const filePath = join(process.cwd(), 'src/data/profile.json');
+  const fileContents = readFileSync(filePath, 'utf8');
+  return JSON.parse(fileContents);
+}
 
 interface BlogPostProps {
   params: Promise<{
@@ -54,19 +67,20 @@ export async function generateStaticParams() {
 // Generate metadata for each blog post
 export async function generateMetadata({ params }: BlogPostProps) {
   const { category, subcategory, slug } = await params;
+  const profile = getProfileData();
   
   try {
     const post = await getBlogPost(category, subcategory, slug);
     
     if (!post) {
       return {
-        title: 'Post Not Found',
+        title: `Post Not Found - ${profile.personal.name}`,
         description: 'The requested blog post could not be found.',
       };
     }
 
     return {
-      title: post.seoTitle || `${post.title} | Alex Johnson - Full-Stack Developer`,
+      title: post.seoTitle || `${post.title} | ${profile.personal.name} - ${profile.personal.title}`,
       description: post.seoDescription || post.excerpt,
       keywords: post.tags.join(', '),
       openGraph: {
@@ -86,7 +100,7 @@ export async function generateMetadata({ params }: BlogPostProps) {
     };
   } catch (error) {
     return {
-      title: 'Blog Post | Alex Johnson - Full-Stack Developer',
+      title: `Blog Post | ${profile.personal.name} - ${profile.personal.title}`,
       description: 'Web development insights and tutorials.',
     };
   }

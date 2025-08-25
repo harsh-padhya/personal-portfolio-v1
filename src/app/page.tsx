@@ -9,6 +9,9 @@ import { readFileSync } from 'fs';
 import { join } from 'path';
 import { Profile, SkillCategory, Experience } from '@/types/profile';
 
+// Force dynamic rendering to always get fresh data
+export const dynamic = 'force-dynamic';
+
 // Load profile data
 function getProfileData(): Profile {
   const filePath = join(process.cwd(), 'src/data/profile.json');
