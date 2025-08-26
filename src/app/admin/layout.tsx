@@ -1,7 +1,8 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { 
   LayoutDashboard as Home, 
   FileText, 
@@ -29,6 +30,37 @@ interface AdminLayoutProps {
 
 export default function AdminLayout({ children }: AdminLayoutProps) {
   const pathname = usePathname();
+  const router = useRouter();
+  const [isDev, setIsDev] = useState(false);
+
+  useEffect(() => {
+    // Check if we're in development mode
+    const isDevMode = process.env.NODE_ENV === 'development';
+    setIsDev(isDevMode);
+    
+    // Redirect to home if not in development mode
+    if (!isDevMode) {
+      router.push('/');
+    }
+  }, [router]);
+
+  // Don't render admin interface in production
+  if (!isDev) {
+    return (
+      <div className="min-h-screen bg-terminal-background flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-mono text-terminal-accent mb-4">Admin Access Restricted</h1>
+          <p className="text-terminal-muted mb-4">Admin functionality is only available in development mode.</p>
+          <Link 
+            href="/" 
+            className="text-terminal-accent hover:text-terminal-accent/80 underline"
+          >
+            Return to Portfolio
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-terminal-background">

@@ -12,7 +12,7 @@ import {
 import { TerminalCard } from '@/components/ui/terminal-card';
 import { TerminalButton } from '@/components/ui/terminal-button';
 import { BlogCategory, BlogSubcategory } from '@/types/blog';
-import { getCategoriesClient } from '@/lib/admin-utils';
+import { getCategoriesClient } from '@/lib/static-data-utils';
 
 export default function CategoriesAdminPage() {
   const [categories, setCategories] = useState<BlogCategory[]>([]);

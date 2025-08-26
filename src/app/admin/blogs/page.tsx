@@ -18,7 +18,7 @@ import {
 import { TerminalCard } from '@/components/ui/terminal-card';
 import { TerminalButton } from '@/components/ui/terminal-button';
 import { BlogListItem } from '@/types/blog';
-import { getAllBlogPostsClient, deleteBlogPostClient } from '@/lib/admin-utils';
+import { getAllBlogPostsClient, deleteBlogPostClient } from '@/lib/static-data-utils';
 
 type SortOption = 'date' | 'title' | 'category';
 type FilterOption = 'all' | 'published' | 'draft' | 'featured';

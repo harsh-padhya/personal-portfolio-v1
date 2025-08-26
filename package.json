@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "node scripts/build-static-data.js && next build",
+    "build:github": "GITHUB_PAGES=true node scripts/build-production.js",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "export": "npm run build:github"
   },
   "dependencies": {
     "clsx": "^2.1.1",

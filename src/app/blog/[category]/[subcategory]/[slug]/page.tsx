@@ -5,9 +5,6 @@ import { readFileSync } from 'fs';
 import { join } from 'path';
 import { Profile } from '@/types/profile';
 
-// Force dynamic rendering
-export const dynamic = 'force-dynamic';
-
 // Load profile data for dynamic metadata
 function getProfileData(): Profile {
   const filePath = join(process.cwd(), 'src/data/profile.json');

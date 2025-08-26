@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { BlogForm } from '@/components/admin/BlogForm';
 import { BlogPost } from '@/types/blog';
-import { saveBlogPostClient } from '@/lib/admin-utils';
+import { saveBlogPostClient } from '@/lib/static-data-utils';
 import { calculateReadTime, slugify } from '@/lib/utils';
 
 export default function NewBlogPostPage() {

@@ -5,9 +5,6 @@ import { join } from 'path';
 import { BlogCategory } from '@/types/blog';
 import { Profile } from '@/types/profile';
 
-// Force dynamic rendering
-export const dynamic = 'force-dynamic';
-
 // Load categories data
 function getCategoriesData(): BlogCategory[] {
   const filePath = join(process.cwd(), 'src/data/blogs/categories.json');

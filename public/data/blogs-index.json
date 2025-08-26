@@ -1,0 +1,144 @@
+[
+  {
+    "id": "building-scalable-react-apps",
+    "title": "Building Scalable React Applications: A Complete Guide",
+    "category": "web-development",
+    "subcategory": "react",
+    "tags": [
+      "react",
+      "scalability",
+      "architecture",
+      "best-practices"
+    ],
+    "publishDate": "2025-08-20T10:00:00.000Z",
+    "lastModified": "2025-08-20T10:00:00.000Z",
+    "readTime": "12 min read",
+    "excerpt": "Learn how to build scalable React applications with proper architecture, state management, and performance optimization techniques.",
+    "featured": true,
+    "difficulty": "intermediate",
+    "status": "published",
+    "author": "Alex Johnson",
+    "seoTitle": "Building Scalable React Applications: Complete Developer Guide",
+    "seoDescription": "Master the art of building scalable React applications with this comprehensive guide covering architecture, state management, performance optimization, and best practices."
+  },
+  {
+    "id": "typescript-advanced-patterns",
+    "title": "Advanced TypeScript Patterns for Better Code",
+    "category": "web-development",
+    "subcategory": "typescript",
+    "tags": [
+      "typescript",
+      "patterns",
+      "generics",
+      "advanced"
+    ],
+    "publishDate": "2025-08-18T14:30:00.000Z",
+    "lastModified": "2025-08-18T14:30:00.000Z",
+    "readTime": "10 min read",
+    "excerpt": "Explore advanced TypeScript patterns including conditional types, mapped types, and utility types to write more robust and maintainable code.",
+    "featured": false,
+    "difficulty": "advanced",
+    "status": "published",
+    "author": "Alex Johnson"
+  },
+  {
+    "id": "docker-production-best-practices",
+    "title": "Docker in Production: Best Practices and Security",
+    "category": "devops",
+    "subcategory": "docker",
+    "tags": [
+      "docker",
+      "production",
+      "security",
+      "devops"
+    ],
+    "publishDate": "2025-08-15T09:15:00.000Z",
+    "lastModified": "2025-08-15T09:15:00.000Z",
+    "readTime": "15 min read",
+    "excerpt": "Learn essential Docker best practices for production deployments, including security hardening, image optimization, and monitoring strategies.",
+    "featured": true,
+    "difficulty": "intermediate",
+    "status": "published",
+    "author": "Alex Johnson"
+  },
+  {
+    "id": "nodejs-performance-optimization",
+    "title": "Node.js Performance Optimization: From Slow to Lightning Fast",
+    "category": "web-development",
+    "subcategory": "nodejs",
+    "tags": [
+      "nodejs",
+      "performance",
+      "optimization",
+      "backend"
+    ],
+    "publishDate": "2025-08-14T16:20:00.000Z",
+    "lastModified": "2025-08-14T16:20:00.000Z",
+    "readTime": "11 min read",
+    "excerpt": "Learn essential Node.js performance optimization techniques including profiling, caching, clustering, and database optimization strategies.",
+    "featured": true,
+    "difficulty": "intermediate",
+    "status": "published",
+    "author": "Alex Johnson"
+  },
+  {
+    "id": "career-growth-senior-developer",
+    "title": "From Mid-Level to Senior Developer: A Growth Roadmap",
+    "category": "career",
+    "subcategory": "growth",
+    "tags": [
+      "career",
+      "growth",
+      "senior-developer",
+      "leadership"
+    ],
+    "publishDate": "2025-08-12T11:00:00.000Z",
+    "lastModified": "2025-08-12T11:00:00.000Z",
+    "readTime": "8 min read",
+    "excerpt": "Navigate the transition from mid-level to senior developer with practical advice on technical skills, leadership, and career development.",
+    "featured": false,
+    "difficulty": "beginner",
+    "status": "published",
+    "author": "Alex Johnson"
+  },
+  {
+    "id": "remote-work-productivity-tips",
+    "title": "10 Productivity Tips for Remote Developers",
+    "category": "career",
+    "subcategory": "tips",
+    "tags": [
+      "remote-work",
+      "productivity",
+      "tips",
+      "work-from-home"
+    ],
+    "publishDate": "2025-08-10T08:30:00.000Z",
+    "lastModified": "2025-08-10T08:30:00.000Z",
+    "readTime": "6 min read",
+    "excerpt": "Practical tips and strategies to maintain high productivity while working remotely as a software developer.",
+    "featured": false,
+    "difficulty": "beginner",
+    "status": "published",
+    "author": "Alex Johnson"
+  },
+  {
+    "id": "cicd-github-actions-guide",
+    "title": "Complete CI/CD Pipeline with GitHub Actions",
+    "category": "devops",
+    "subcategory": "cicd",
+    "tags": [
+      "github-actions",
+      "cicd",
+      "automation",
+      "deployment"
+    ],
+    "publishDate": "2025-08-08T13:45:00.000Z",
+    "lastModified": "2025-08-08T13:45:00.000Z",
+    "readTime": "9 min read",
+    "excerpt": "Build a complete CI/CD pipeline using GitHub Actions for automated testing, building, and deployment of your applications.",
+    "featured": false,
+    "difficulty": "intermediate",
+    "status": "published",
+    "author": "Alex Johnson"
+  }
+]

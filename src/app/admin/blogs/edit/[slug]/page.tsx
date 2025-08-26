@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { BlogForm } from '@/components/admin/BlogForm';
 import { BlogPost } from '@/types/blog';
-import { getBlogPostByIdClient, saveBlogPostClient } from '@/lib/admin-utils';
+import { getBlogPostByIdClient, saveBlogPostClient } from '@/lib/static-data-utils';
 import { calculateReadTime } from '@/lib/utils';
 
 export default function EditBlogPostPage() {

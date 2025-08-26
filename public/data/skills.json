@@ -1,0 +1,180 @@
+[
+  {
+    "id": "frontend",
+    "name": "Frontend Development",
+    "skills": [
+      {
+        "name": "React",
+        "level": 5,
+        "years": 4,
+        "description": "Expert in building complex UIs with hooks, context, and performance optimization",
+        "category": "frontend"
+      },
+      {
+        "name": "TypeScript",
+        "level": 5,
+        "years": 3,
+        "description": "Advanced type safety, generics, and architectural patterns",
+        "category": "frontend"
+      },
+      {
+        "name": "JavaScript",
+        "level": 5,
+        "years": 5,
+        "description": "ES6+, async programming, and functional programming concepts",
+        "category": "frontend"
+      },
+      {
+        "name": "HTML/CSS",
+        "level": 4,
+        "years": 5,
+        "description": "Semantic HTML, CSS Grid, Flexbox, and responsive design",
+        "category": "frontend"
+      },
+      {
+        "name": "Next.js",
+        "level": 4,
+        "years": 2,
+        "description": "SSR, SSG, API routes, and performance optimization",
+        "category": "frontend"
+      },
+      {
+        "name": "Tailwind CSS",
+        "level": 4,
+        "years": 2,
+        "description": "Utility-first CSS, custom configurations, and component design",
+        "category": "frontend"
+      }
+    ]
+  },
+  {
+    "id": "backend",
+    "name": "Backend Development",
+    "skills": [
+      {
+        "name": "Node.js",
+        "level": 5,
+        "years": 4,
+        "description": "Express.js, RESTful APIs, and microservices architecture",
+        "category": "backend"
+      },
+      {
+        "name": "Python",
+        "level": 3,
+        "years": 2,
+        "description": "Django, Flask, and data processing with pandas",
+        "category": "backend"
+      },
+      {
+        "name": "PostgreSQL",
+        "level": 4,
+        "years": 3,
+        "description": "Complex queries, performance optimization, and database design",
+        "category": "backend"
+      },
+      {
+        "name": "MongoDB",
+        "level": 4,
+        "years": 3,
+        "description": "Document modeling, aggregation pipelines, and indexing",
+        "category": "backend"
+      },
+      {
+        "name": "Redis",
+        "level": 3,
+        "years": 2,
+        "description": "Caching strategies, session management, and pub/sub",
+        "category": "backend"
+      },
+      {
+        "name": "GraphQL",
+        "level": 3,
+        "years": 1,
+        "description": "Schema design, resolvers, and performance optimization",
+        "category": "backend"
+      }
+    ]
+  },
+  {
+    "id": "devops",
+    "name": "DevOps & Cloud",
+    "skills": [
+      {
+        "name": "AWS",
+        "level": 4,
+        "years": 2,
+        "description": "EC2, S3, Lambda, RDS, and CloudFormation",
+        "category": "devops"
+      },
+      {
+        "name": "Docker",
+        "level": 4,
+        "years": 3,
+        "description": "Containerization, multi-stage builds, and orchestration",
+        "category": "devops"
+      },
+      {
+        "name": "GitHub Actions",
+        "level": 4,
+        "years": 2,
+        "description": "CI/CD pipelines, automated testing, and deployment workflows",
+        "category": "devops"
+      },
+      {
+        "name": "Vercel",
+        "level": 4,
+        "years": 2,
+        "description": "Static site deployment, serverless functions, and edge computing",
+        "category": "devops"
+      },
+      {
+        "name": "Nginx",
+        "level": 3,
+        "years": 2,
+        "description": "Reverse proxy, load balancing, and SSL configuration",
+        "category": "devops"
+      }
+    ]
+  },
+  {
+    "id": "tools",
+    "name": "Tools & Workflow",
+    "skills": [
+      {
+        "name": "Git",
+        "level": 5,
+        "years": 5,
+        "description": "Advanced branching strategies, rebasing, and collaborative workflows",
+        "category": "tools"
+      },
+      {
+        "name": "VS Code",
+        "level": 5,
+        "years": 4,
+        "description": "Extensions, debugging, and productivity optimization",
+        "category": "tools"
+      },
+      {
+        "name": "Jest",
+        "level": 4,
+        "years": 3,
+        "description": "Unit testing, integration testing, and mocking",
+        "category": "tools"
+      },
+      {
+        "name": "Webpack",
+        "level": 3,
+        "years": 2,
+        "description": "Bundle optimization, code splitting, and custom configurations",
+        "category": "tools"
+      },
+      {
+        "name": "Figma",
+        "level": 3,
+        "years": 2,
+        "description": "Design system implementation and developer handoff",
+        "category": "tools"
+      }
+    ]
+  }
+]

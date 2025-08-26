@@ -15,7 +15,7 @@ import {
 import { TerminalCard } from '@/components/ui/terminal-card';
 import { TerminalButton } from '@/components/ui/terminal-button';
 import { BlogListItem } from '@/types/blog';
-import { getAllBlogPostsClient } from '@/lib/admin-utils';
+import { getAllBlogPostsClient } from '@/lib/static-data-utils';
 
 interface DashboardStats {
   totalPosts: number;
