@@ -32,7 +32,7 @@ export function HeroSection({ profile }: HeroSectionProps) {
 │  $ pwd                               │
 │  > ~/portfolio                       │
 │  $ ls -la skills/                    │
-│  > TypeScript React Node.js AWS      │
+│  > Python AWS Docker React LLM       │
 ╰──────────────────────────────────────╯`}
           </pre>
         </div>

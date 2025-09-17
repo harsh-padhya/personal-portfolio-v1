@@ -15,7 +15,7 @@
     "website": "https://harsh-padhya.github.io/personal-portfolio-v1/"
   },
   "hero": {
-    "tagline": "Building scalable solutions, one microservice at a time",
+    "tagline": "Building scalable solutions, one component at a time",
     "description": "I craft high-performance enterprise applications with Python, AWS, and modern web technologies. Specializing in microservices architecture, LLM integration, and delivering solutions that handle billions of requests. Let's build something impactful together.",
     "cta": "Let's Connect"
   }

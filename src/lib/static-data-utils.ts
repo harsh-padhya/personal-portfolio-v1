@@ -133,7 +133,7 @@ export async function getStaticProfile(): Promise<Profile> {
         website: ''
       },
       hero: {
-        tagline: 'Building scalable solutions, one microservice at a time',
+        tagline: 'Building scalable solutions, one component at a time',
         description: 'Creating amazing digital experiences',
         cta: "Let's Connect"
       }
