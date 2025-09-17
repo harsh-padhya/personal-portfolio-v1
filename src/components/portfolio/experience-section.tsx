@@ -1,6 +1,6 @@
 'use client';
 
-import { Building, MapPin, Calendar, ExternalLink, Award, GraduationCap, Briefcase } from 'lucide-react';
+import { Building, MapPin, Calendar, ExternalLink, GraduationCap, Briefcase } from 'lucide-react';
 import { TerminalCard } from '@/components/ui';
 import { Experience } from '@/types/profile';
 
@@ -11,7 +11,6 @@ interface ExperienceSectionProps {
 const typeIcons = {
   work: Briefcase,
   education: GraduationCap,
-  certification: Award,
   project: Building,
 } as const;
 
@@ -107,7 +106,6 @@ function ExperienceCard({ experience }: { experience: Experience }) {
 export function ExperienceSection({ experiences }: ExperienceSectionProps) {
   const workExperiences = experiences.filter(exp => exp.type === 'work');
   const education = experiences.filter(exp => exp.type === 'education');
-  const certifications = experiences.filter(exp => exp.type === 'certification');
   
   return (
     <section id="experience" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
@@ -120,32 +118,6 @@ export function ExperienceSection({ experiences }: ExperienceSectionProps) {
           <p className="text-terminal-muted font-mono max-w-2xl mx-auto text-sm sm:text-base px-2">
             {'>'} Journey through my professional development and achievements
           </p>
-        </div>
-
-        {/* Experience Timeline Header */}
-        <div className="mb-8 sm:mb-12">
-          <TerminalCard title="experience-summary.sh" variant="code">
-            <div className="font-mono text-xs sm:text-sm space-y-2">
-              <div className="text-terminal-muted"># Professional Experience Summary</div>
-              <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mt-4">
-                <div className="flex items-center gap-2">
-                  <Briefcase className="h-4 w-4 text-terminal-accent" />
-                  <span className="text-terminal-foreground">Work:</span>
-                  <span className="text-terminal-accent">{workExperiences.length} positions</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <GraduationCap className="h-4 w-4 text-terminal-accent" />
-                  <span className="text-terminal-foreground">Education:</span>
-                  <span className="text-terminal-accent">{education.length} degrees</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Award className="h-4 w-4 text-terminal-accent" />
-                  <span className="text-terminal-foreground">Certifications:</span>
-                  <span className="text-terminal-accent">{certifications.length} earned</span>
-                </div>
-              </div>
-            </div>
-          </TerminalCard>
         </div>
 
         {/* Work Experience */}
@@ -163,9 +135,8 @@ export function ExperienceSection({ experiences }: ExperienceSectionProps) {
           </div>
         )}
 
-        {/* Education & Certifications */}
-        <div className="grid md:grid-cols-2 gap-8">
-          {/* Education */}
+        {/* Education */}
+        <div>
           {education.length > 0 && (
             <div>
               <h3 className="text-2xl font-bold text-terminal-foreground mb-6 font-mono">
@@ -174,21 +145,6 @@ export function ExperienceSection({ experiences }: ExperienceSectionProps) {
               </h3>
               <div className="space-y-4">
                 {education.map((experience) => (
-                  <ExperienceCard key={experience.id} experience={experience} />
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Certifications */}
-          {certifications.length > 0 && (
-            <div>
-              <h3 className="text-2xl font-bold text-terminal-foreground mb-6 font-mono">
-                <Award className="inline h-6 w-6 mr-2 text-terminal-accent" />
-                Certifications
-              </h3>
-              <div className="space-y-4">
-                {certifications.map((experience) => (
                   <ExperienceCard key={experience.id} experience={experience} />
                 ))}
               </div>

@@ -14,7 +14,8 @@ import {
 } from 'lucide-react';
 import { TerminalCard } from '@/components/ui/terminal-card';
 import { TerminalButton } from '@/components/ui/terminal-button';
-import { Experience } from '@/types/portfolio';
+import { Experience } from '@/types/profile';
+import { getAllExperienceClient, saveExperienceClient } from '@/lib/static-data-utils';
 
 const typeIcons = {
   work: Briefcase,
@@ -36,8 +37,7 @@ export default function ExperienceAdminPage() {
 
   const loadExperiences = async () => {
     try {
-      const response = await fetch('/api/admin/experience');
-      const data = await response.json();
+      const data = await getAllExperienceClient();
       setExperiences(data);
     } catch (error) {
       console.error('Error loading experiences:', error);
@@ -48,15 +48,9 @@ export default function ExperienceAdminPage() {
 
   const saveExperiences = async () => {
     try {
-      const response = await fetch('/api/admin/experience', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(experiences)
-      });
+      const success = await saveExperienceClient(experiences);
 
-      if (response.ok) {
+      if (success) {
         console.log('Experiences saved successfully');
       }
     } catch (error) {

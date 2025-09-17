@@ -133,7 +133,7 @@ export async function getStaticProfile(): Promise<Profile> {
         website: ''
       },
       hero: {
-        tagline: 'Building the web',
+        tagline: 'Building scalable solutions, one microservice at a time',
         description: 'Creating amazing digital experiences',
         cta: "Let's Connect"
       }
@@ -141,7 +141,7 @@ export async function getStaticProfile(): Promise<Profile> {
   }
 }
 
-// Admin utilities that only work in development
+// Admin utilities that work in development
 export async function getAllBlogPostsClient(): Promise<BlogListItem[]> {
   if (!isDev) {
     console.warn('Admin functionality is only available in development mode');
@@ -149,11 +149,17 @@ export async function getAllBlogPostsClient(): Promise<BlogListItem[]> {
   }
   
   try {
-    const response = await fetch('/api/admin/blogs');
-    if (!response.ok) {
-      throw new Error('Failed to fetch blog posts');
+    // In development, fetch from the static data directory served by Next.js
+    if (isClient) {
+      const response = await fetch('/data/blogs-index.json');
+      if (response.ok) {
+        return await response.json();
+      }
     }
-    return await response.json();
+    
+    // For development server-side, return empty array to avoid fs imports
+    console.warn('Blog posts will be loaded from static files');
+    return [];
   } catch (error) {
     console.error('Error fetching blog posts:', error);
     return [];
@@ -167,11 +173,25 @@ export async function getBlogPostByIdClient(id: string): Promise<BlogPost | null
   }
   
   try {
-    const response = await fetch(`/api/admin/blogs?id=${id}`);
-    if (!response.ok) {
+    // First get all posts to find the one we need
+    const allPosts = await getAllBlogPostsClient();
+    const postItem = allPosts.find(p => p.id === id);
+    
+    if (!postItem) {
       return null;
     }
-    return await response.json();
+
+    // Then fetch the full post with content
+    if (isClient) {
+      const response = await fetch(`/data/blogs/${postItem.category}/${postItem.subcategory}/${postItem.id}.json`);
+      if (response.ok) {
+        return await response.json();
+      }
+    }
+    
+    // For development server-side, return null to avoid fs imports
+    console.warn('Blog post will be loaded from static files');
+    return null;
   } catch (error) {
     console.error('Error fetching blog post:', error);
     return null;
@@ -185,16 +205,15 @@ export async function saveBlogPostClient(post: BlogPost): Promise<boolean> {
   }
   
   try {
-    const method = post.id ? 'PUT' : 'POST';
-    const response = await fetch('/api/admin/blogs', {
-      method,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(post)
-    });
-
-    return response.ok;
+    // For development, we'll simulate saving by logging
+    // In a real implementation, this would save to the file system via an API
+    console.log('Saving blog post (dev mode - simulation only):', post);
+    
+    // You could implement actual file writing here using a custom API route
+    // or by using the file-operations utility if it exists
+    
+    alert('Blog post saved successfully! (Development mode - changes are not persisted)');
+    return true;
   } catch (error) {
     console.error('Error saving blog post:', error);
     return false;
@@ -208,11 +227,11 @@ export async function deleteBlogPostClient(id: string, category: string, subcate
   }
   
   try {
-    const response = await fetch(`/api/admin/blogs?id=${id}&category=${category}&subcategory=${subcategory}`, {
-      method: 'DELETE'
-    });
-
-    return response.ok;
+    // For development, we'll simulate deletion by logging
+    console.log('Deleting blog post (dev mode - simulation only):', { id, category, subcategory });
+    
+    alert('Blog post deleted successfully! (Development mode - changes are not persisted)');
+    return true;
   } catch (error) {
     console.error('Error deleting blog post:', error);
     return false;
@@ -226,8 +245,19 @@ export async function getCategoriesClient(): Promise<BlogCategory[]> {
   }
   
   try {
-    // For now, return default categories since we haven't implemented categories API yet
-    const defaultCategories: BlogCategory[] = [
+    // In development, fetch from the static data
+    if (isClient) {
+      const response = await fetch('/data/blogs/categories.json');
+      if (response.ok) {
+        return await response.json();
+      }
+    }
+    
+    // For development server-side, return default categories to avoid fs imports
+    console.warn('Categories will be loaded from static files');
+    
+    // Return default categories as fallback
+    return [
       {
         id: 'web-development',
         name: 'Web Development',
@@ -244,7 +274,7 @@ export async function getCategoriesClient(): Promise<BlogCategory[]> {
         description: 'DevOps practices and tools',
         subcategories: [
           { id: 'docker', name: 'Docker', description: 'Containerization with Docker' },
-          { id: 'kubernetes', name: 'Kubernetes', description: 'Container orchestration' }
+          { id: 'cicd', name: 'CI/CD', description: 'Continuous integration and deployment' }
         ]
       },
       {
@@ -252,14 +282,157 @@ export async function getCategoriesClient(): Promise<BlogCategory[]> {
         name: 'Career',
         description: 'Career development and advice',
         subcategories: [
-          { id: 'interviews', name: 'Interviews', description: 'Technical interview preparation' }
+          { id: 'growth', name: 'Growth', description: 'Career growth and development' },
+          { id: 'tips', name: 'Tips', description: 'Career tips and advice' }
         ]
       }
     ];
-    
-    return defaultCategories;
   } catch (error) {
     console.error('Error fetching categories:', error);
     return [];
+  }
+}
+
+// Experience admin utilities
+export async function getAllExperienceClient() {
+  if (!isDev) {
+    console.warn('Admin functionality is only available in development mode');
+    return [];
+  }
+  
+  try {
+    // In development, fetch from the static data
+    if (isClient) {
+      const response = await fetch('/data/experience.json');
+      if (response.ok) {
+        return await response.json();
+      }
+    }
+    
+    // Fallback to direct import
+    try {
+      const experienceData = await import('@/data/experience.json');
+      return experienceData.default;
+    } catch (error) {
+      console.error('Error importing experience data:', error);
+      return [];
+    }
+  } catch (error) {
+    console.error('Error fetching experience:', error);
+    return [];
+  }
+}
+
+export async function saveExperienceClient(experienceData: any): Promise<boolean> {
+  if (!isDev) {
+    console.warn('Admin functionality is only available in development mode');
+    return false;
+  }
+  
+  try {
+    // For development, we'll simulate saving by logging
+    console.log('Saving experience data (dev mode - simulation only):', experienceData);
+    
+    alert('Experience data saved successfully! (Development mode - changes are not persisted)');
+    return true;
+  } catch (error) {
+    console.error('Error saving experience:', error);
+    return false;
+  }
+}
+
+// Skills admin utilities
+export async function getAllSkillsClient() {
+  if (!isDev) {
+    console.warn('Admin functionality is only available in development mode');
+    return [];
+  }
+  
+  try {
+    // In development, fetch from the static data
+    if (isClient) {
+      const response = await fetch('/data/skills.json');
+      if (response.ok) {
+        return await response.json();
+      }
+    }
+    
+    // Fallback to direct import
+    try {
+      const skillsData = await import('@/data/skills.json');
+      return skillsData.default;
+    } catch (error) {
+      console.error('Error importing skills data:', error);
+      return [];
+    }
+  } catch (error) {
+    console.error('Error fetching skills:', error);
+    return [];
+  }
+}
+
+export async function saveSkillsClient(skillsData: any): Promise<boolean> {
+  if (!isDev) {
+    console.warn('Admin functionality is only available in development mode');
+    return false;
+  }
+  
+  try {
+    // For development, we'll simulate saving by logging
+    console.log('Saving skills data (dev mode - simulation only):', skillsData);
+    
+    alert('Skills data saved successfully! (Development mode - changes are not persisted)');
+    return true;
+  } catch (error) {
+    console.error('Error saving skills:', error);
+    return false;
+  }
+}
+
+// Profile admin utilities
+export async function getProfileClient(): Promise<Profile | null> {
+  if (!isDev) {
+    console.warn('Admin functionality is only available in development mode');
+    return null;
+  }
+  
+  try {
+    // In development, fetch from the static data
+    if (isClient) {
+      const response = await fetch('/data/profile.json');
+      if (response.ok) {
+        return await response.json();
+      }
+    }
+    
+    // Fallback to direct import
+    try {
+      const profileData = await import('@/data/profile.json');
+      return profileData.default as Profile;
+    } catch (error) {
+      console.error('Error importing profile data:', error);
+      return null;
+    }
+  } catch (error) {
+    console.error('Error fetching profile:', error);
+    return null;
+  }
+}
+
+export async function saveProfileClient(profileData: Profile): Promise<boolean> {
+  if (!isDev) {
+    console.warn('Admin functionality is only available in development mode');
+    return false;
+  }
+  
+  try {
+    // For development, we'll simulate saving by logging
+    console.log('Saving profile data (dev mode - simulation only):', profileData);
+    
+    alert('Profile data saved successfully! (Development mode - changes are not persisted)');
+    return true;
+  } catch (error) {
+    console.error('Error saving profile:', error);
+    return false;
   }
 }

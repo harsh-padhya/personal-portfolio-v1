@@ -15,7 +15,8 @@ import {
 } from 'lucide-react';
 import { TerminalCard } from '@/components/ui/terminal-card';
 import { TerminalButton } from '@/components/ui/terminal-button';
-import { Profile } from '@/types/portfolio';
+import { Profile } from '@/types/profile';
+import { getProfileClient, saveProfileClient } from '@/lib/static-data-utils';
 
 export default function ProfileAdminPage() {
   const [profile, setProfile] = useState<Profile>({
@@ -46,12 +47,11 @@ export default function ProfileAdminPage() {
   useEffect(() => {
     async function loadProfile() {
       try {
-        const response = await fetch('/api/admin/profile');
-        if (!response.ok) {
+        const data = await getProfileClient();
+        if (!data) {
           throw new Error('Failed to load profile');
         }
         
-        const data = await response.json();
         setProfile({
           personal: {
             name: data.personal?.name || '',
@@ -88,19 +88,13 @@ export default function ProfileAdminPage() {
   const handleSave = async () => {
     setSaving(true);
     try {
-      const response = await fetch('/api/admin/profile', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(profile),
-      });
+      const success = await saveProfileClient(profile);
 
-      if (!response.ok) {
+      if (!success) {
         throw new Error('Failed to save profile');
       }
 
-      alert('Profile saved successfully!');
+      // Success message is handled by the saveProfileClient function
     } catch (error) {
       console.error('Error saving profile:', error);
       alert('Error saving profile. Please try again.');

@@ -16,11 +16,11 @@ import { TerminalButton } from '@/components/ui/terminal-button';
 export default function SettingsAdminPage() {
   const [settings, setSettings] = useState({
     site: {
-      title: 'Harsh Vardhan - Software Engineer',
+      title: 'Harsh Padhya - Senior Software Engineer',
       description: 'Personal portfolio and blog of a software engineer with 5+ years of experience',
       url: 'https://harshvardhan.dev',
       language: 'en',
-      timezone: 'UTC'
+      timezone: 'Asia/Kolkata'
     },
     blog: {
       postsPerPage: 10,
@@ -162,6 +162,7 @@ export default function SettingsAdminPage() {
                   <option value="America/New_York">EST</option>
                   <option value="America/Los_Angeles">PST</option>
                   <option value="Europe/London">GMT</option>
+                  <option value="Asia/Kolkata">IST</option>
                 </select>
               </div>
             </div>

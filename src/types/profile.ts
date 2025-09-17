@@ -30,7 +30,7 @@ export interface Experience {
   duration: string;                // Human readable duration
   description: string;             // Markdown supported
   technologies: string[];          // Array of tech stack
-  type: 'work' | 'education' | 'certification' | 'project';
+  type: 'work' | 'education' | 'project';
   featured: boolean;
   location?: string;
   website?: string;

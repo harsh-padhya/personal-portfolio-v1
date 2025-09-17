@@ -16,7 +16,8 @@ import {
 } from 'lucide-react';
 import { TerminalCard } from '@/components/ui/terminal-card';
 import { TerminalButton } from '@/components/ui/terminal-button';
-import { SkillCategory, Skill } from '@/types/portfolio';
+import { SkillCategory, Skill } from '@/types/profile';
+import { getAllSkillsClient, saveSkillsClient } from '@/lib/static-data-utils';
 
 const categoryIcons = {
   frontend: Globe,
@@ -44,8 +45,7 @@ export default function SkillsAdminPage() {
 
   const loadSkills = async () => {
     try {
-      const response = await fetch('/api/admin/skills');
-      const data = await response.json();
+      const data = await getAllSkillsClient();
       setSkillCategories(data);
     } catch (error) {
       console.error('Error loading skills:', error);
@@ -56,15 +56,9 @@ export default function SkillsAdminPage() {
 
   const saveSkills = async () => {
     try {
-      const response = await fetch('/api/admin/skills', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(skillCategories)
-      });
+      const success = await saveSkillsClient(skillCategories);
 
-      if (response.ok) {
+      if (success) {
         console.log('Skills saved successfully');
       }
     } catch (error) {

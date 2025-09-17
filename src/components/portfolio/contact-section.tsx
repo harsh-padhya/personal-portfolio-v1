@@ -90,7 +90,7 @@ export function ContactSection({ profile }: ContactSectionProps) {
                   <div className="flex items-center gap-3 text-terminal-foreground">
                     <Calendar className="h-5 w-5 text-terminal-accent" />
                     <span className="font-mono text-sm">timezone:</span>
-                    <span>PST (UTC-8)</span>
+                    <span>IST (UTC+5:30)</span>
                   </div>
                 </div>
 

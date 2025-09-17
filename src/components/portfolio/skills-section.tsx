@@ -125,7 +125,7 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
           
           <TerminalCard variant="glass" className="text-center">
             <div className="space-y-2">
-              <div className="text-3xl font-bold text-terminal-accent font-mono">100+</div>
+              <div className="text-3xl font-bold text-terminal-accent font-mono">10+</div>
               <div className="text-terminal-foreground">Projects Delivered</div>
               <div className="text-terminal-muted text-sm">From concept to production</div>
             </div>

@@ -2,21 +2,21 @@
   "personal": {
     "name": "Harsh Padhya",
     "title": "Senior Software Engineer",
-    "email": "alex.johnson@example.com",
-    "location": "San Francisco, CA",
-    "bio": "Passionate full-stack developer with 5+ years of experience building scalable web applications. I specialize in React, Node.js, and cloud architecture, with a strong focus on performance optimization and developer experience. When I'm not coding, you'll find me contributing to open source projects, writing technical articles, or exploring the latest in web technologies.",
+    "email": "harshpadhya96@gmail.com",
+    "phone": "+91 9687087471",
+    "location": "Bangalore, India",
+    "bio": "Seasoned software engineer with 5+ years of experience in Python, AWS, web development, and database management. Proven track record in delivering scalable, high-performance solutions, optimizing microservices, and driving impactful product outcomes. Expertise in FastAPI, Flask, React, and LLM integration with focus on building enterprise-grade solutions.",
     "avatar": "/images/avatar.jpg",
-    "resume": "/documents/alex-johnson-resume.pdf"
+    "resume": "/documents/harsh-padhya-resume.pdf"
   },
   "social": {
-    "github": "https://github.com/alexjohnson",
-    "linkedin": "https://linkedin.com/in/alexjohnson-dev",
-    "twitter": "https://twitter.com/alexjohnson_dev",
-    "website": "https://alexjohnson.dev"
+    "github": "https://github.com/harsh-padhya",
+    "linkedin": "https://linkedin.com/in/harsh-padhya",
+    "website": "https://harsh-padhya.github.io/personal-portfolio-v1/"
   },
   "hero": {
-    "tagline": "Building the web, one component at a time",
-    "description": "I craft exceptional digital experiences with clean code, thoughtful design, and a relentless focus on performance. Let's build something amazing together.",
+    "tagline": "Building scalable solutions, one microservice at a time",
+    "description": "I craft high-performance enterprise applications with Python, AWS, and modern web technologies. Specializing in microservices architecture, LLM integration, and delivering solutions that handle billions of requests. Let's build something impactful together.",
     "cta": "Let's Connect"
   }
 }
