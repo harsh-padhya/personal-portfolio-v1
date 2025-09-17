@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { Github, Linkedin, Twitter, Download, Mail, ArrowDown } from 'lucide-react';
 import { TerminalButton, TypingAnimation } from '@/components/ui';
 import { Profile } from '@/types/profile';
+import { getAssetPath } from '@/lib/utils';
 
 interface HeroSectionProps {
   profile: Profile;
@@ -87,7 +88,7 @@ export function HeroSection({ profile }: HeroSectionProps) {
             <TerminalButton
               variant="secondary"
               size="lg"
-              onClick={() => window.open(profile.personal.resume, '_blank')}
+              onClick={() => window.open(getAssetPath(profile.personal.resume), '_blank')}
               className="w-full xs:w-auto"
             >
               <Download className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />

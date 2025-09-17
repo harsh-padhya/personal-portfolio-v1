@@ -32,3 +32,18 @@ export function slugify(text: string): string {
 export function generateId(): string {
   return Date.now().toString(36) + Math.random().toString(36).substr(2);
 }
+
+export function getAssetPath(path: string): string {
+  // Check if we're in GitHub Pages environment
+  const isGitHubPages = process.env.NODE_ENV === 'production' && 
+    (typeof window !== 'undefined' ? 
+      window.location.hostname === 'harsh-padhya.github.io' : 
+      process.env.GITHUB_PAGES === 'true');
+  
+  const basePath = isGitHubPages ? '/personal-portfolio-v1' : '';
+  
+  // Ensure path starts with /
+  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+  
+  return `${basePath}${normalizedPath}`;
+}

@@ -124,7 +124,7 @@ export async function getStaticProfile(): Promise<Profile> {
         location: 'Remote',
         bio: 'Passionate developer',
         avatar: '/images/avatar.jpg',
-        resume: '/documents/resume.pdf'
+        resume: '/documents/harsh-padhya-resume.pdf'
       },
       social: {
         github: '',
